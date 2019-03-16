@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ('Validate Satge') {
+        stage ('Validate Stage') {
             
             steps {
                 withMaven(maven : 'Maven') {
@@ -46,10 +46,19 @@ pipeline {
                 }
             }   
         }
-        stage ('Deployment Stage') {
+        
+        stage ('Installation Stage') {
             steps {
                 withMaven(maven : 'Maven') {
                     sh 'mvn install'
+                }
+            }
+        }    
+ 
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'Maven') {
+                    sh 'mvn deploy'
                 }
             }
         }
