@@ -20,10 +20,9 @@ pipeline {
             }
         }
         
-        stage ('Build') {
-            agent (label 'Mavenlabel,') {
-                steps {
-                    echo 'Building..'
+        node (label 'Mavenlabel') {
+            stage ('Build') {
+                    echo "Building.."
                 }
             }
         }
