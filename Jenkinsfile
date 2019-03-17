@@ -22,7 +22,10 @@ pipeline {
         
         node (label 'Mavenlabel') {
             stage ('Build') {
-                    echo "Building.."
+                steps {
+                    withMaven(maven : 'Maven') {
+                        sh 'mvn build'
+                    }   
                 }
             }
         }
