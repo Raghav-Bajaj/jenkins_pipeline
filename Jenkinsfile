@@ -19,6 +19,14 @@ pipeline {
                 }
             }
         }
+        
+        stage ('Build') {
+            agent (label 'Mavenlabel,') {
+                steps {
+                    echo 'Building..'
+                }
+            }
+        }
 
         stage ('Testing Stage') {
 
