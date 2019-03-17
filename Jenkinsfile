@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'Mavenlabel'}
+    agent {label 'Javalabel'}
 
     stages {
         stage ('Validate Stage') {
