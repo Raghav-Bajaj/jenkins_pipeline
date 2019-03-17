@@ -40,7 +40,7 @@ pipeline {
         
         stage('Building and Integrating Sonar') {
             
-            step {
+            steps {
                 withSonarQubeEnv('sonarqube') {
                     sh 'mvn package sonar:sonar'
                 }
@@ -48,6 +48,7 @@ pipeline {
         }
         
         stage('Deployment Stage') {
+            
             steps {
                 withMaven(maven : 'Maven') {
                     sh 'mvn install'
