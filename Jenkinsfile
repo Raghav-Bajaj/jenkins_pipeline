@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'Mavenlabel'}
 
     stages {
         stage ('Validate Stage') {
@@ -30,12 +30,12 @@ pipeline {
         }
         
         stage('Build on slave') {
-            agent {label 'Mavenlabel'}
+            
             steps{
-                checkout scm
-                sh 'mvn clean install'
+                withMaven(maven : 'Maven') {
+                sh 'mvn clean package'
             }
         }
     }
 }
-        
+}        
