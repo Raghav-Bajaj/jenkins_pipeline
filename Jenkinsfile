@@ -19,16 +19,6 @@ pipeline {
                 }
             }
         }
-        
-        node (label 'Mavenlabel') {
-            stage ('Build') {
-                steps {
-                    withMaven(maven : 'Maven') {
-                        sh 'mvn build'
-                    }   
-                }
-            }
-        }
 
         stage ('Testing Stage') {
 
@@ -37,6 +27,18 @@ pipeline {
                     sh 'mvn test'
                 }
             }
+        }
+        
+        options { 
+            skipDefaultCheckout() 
+        }
+         stages{
+            stage('Build on Slave'){
+               agent {label 'Mavenlabel'}
+         steps{
+                checkout scm
+                sh 'mvn clean install'
+           }
         }
 
         stage ('Package Stage') {
