@@ -29,9 +29,6 @@ pipeline {
             }
         }
         
-        options {
-            skipDefaultCheckout()
-        }
         stage('Build on slave') {
             agent {label 'Mavenlabel'}
             steps{
