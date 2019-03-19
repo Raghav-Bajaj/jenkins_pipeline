@@ -41,7 +41,7 @@ pipeline {
         stage ('Deploy to Tomcat') {
        
             steps {
-                sshagent (credentials: ['tomcat']) {
+                sshagent (credentials: ['tomcat-dev']) {
                     sh 'scp -o StrictHostKeyChecking=no /home/ec2-user/jenkinsbuild/workspace/myPipelineJob/target/*.jar ec2-user@//13.233.142.28:/opt/tomcat/webapps/'
                 }
             }
