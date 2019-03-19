@@ -5,7 +5,7 @@ pipeline {
         stage ('Validate Stage') {
             
             steps {
-                withMaven(maven : 'Apache Maven 7.0.76') {
+                withMaven(maven : 'Maven') {
                     sh 'mvn validate'
                 }
             }   
@@ -14,7 +14,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'Apache Maven 7.0.76') {
+                withMaven(maven : 'Maven') {
                     sh 'mvn clean compile'
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'Apache Maven 7.0.76') {
+                withMaven(maven : 'Maven') {
                     sh 'mvn test'
                 }
             }
@@ -32,7 +32,7 @@ pipeline {
         stage('Build on slave') {
             
             steps {
-                withMaven(maven : 'Apache Maven 7.0.76') {
+                withMaven(maven : 'Maven') {
                 sh 'mvn clean package'
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
         stage('Deployment Stage') {
             
             steps {
-                withMaven(maven : 'Apache Maven 7.0.76') {
+                withMaven(maven : 'Maven') {
                     sh 'mvn install'
                 }
             }
